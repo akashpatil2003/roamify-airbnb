@@ -6,6 +6,7 @@ import ClientOnly from "./components/ClientOnly";
 import RegisterModal from "./components/modals/RegisterModal";
 import Modal from "./components/modals/Modal";
 import ToasterProvider from "./providers/ToasterProvider";
+import LoginModal from "./components/modals/LoginModal";
 
 export const metadata: Metadata = {
   title: "Roamify",
@@ -28,6 +29,7 @@ export default function RootLayout({
       >
         <ClientOnly >
           <ToasterProvider />
+          <LoginModal />
           <RegisterModal />
           <Navbar />
         </ClientOnly>
