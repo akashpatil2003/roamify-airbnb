@@ -5,8 +5,8 @@ import { FcGoogle } from "react-icons/fc";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 
 import useRegisterModal from "@/app/hooks/useRegisterModal";
-import useLoginModal from "@/app/hooks/userLoginModal";
-import { useState } from "react";
+import useLoginModal from "@/app/hooks/useLoginModal";
+import { useCallback, useState } from "react";
 import Modal from "./Modal";
 import Heading from "../Heading";
 import Input from "../inputs/Input";
@@ -49,6 +49,11 @@ const LoginModal = () => {
       })
   }
 
+  const toggle = useCallback(() => {
+    loginModal.onClose();
+    registerModal.onOpen();
+  }, [loginModal, registerModal])
+
   const bodyContent = (
     <div className="flex flex-col gap-4">
       <Heading
@@ -89,13 +94,13 @@ const LoginModal = () => {
       >
         <div className=" justify-center flex flex-row items-center gap-2">
           <div>
-            Already have an account
+            First time using Roamify
           </div>
           <div
-            onClick={registerModal.onClose}
+            onClick={toggle}
             className="text-sky-600 font-semibold cursor-pointer hover:underline"
           >
-            Register
+            Create an account
           </div>
         </div>
       </div>

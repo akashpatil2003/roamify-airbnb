@@ -8,6 +8,7 @@ import Modal from "./components/modals/Modal";
 import ToasterProvider from "./providers/ToasterProvider";
 import LoginModal from "./components/modals/LoginModal";
 import getCurrentUser from "./actions/getCurrentUser";
+import RentModal from "./components/modals/RentModal";
 
 export const metadata: Metadata = {
   title: "Roamify",
@@ -32,6 +33,7 @@ export default async function RootLayout({
       >
         <ClientOnly >
           <ToasterProvider />
+          <RentModal />
           <LoginModal />
           <RegisterModal />
           <Navbar currentUser={currentUser} />
