@@ -7,10 +7,14 @@ import { useMemo, useState } from "react"
 import Heading from "../Heading"
 import { categories } from "../navbar/Categories"
 import CategoryInput from "../inputs/CategoryInput"
-import { FieldValues, useForm } from "react-hook-form"
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form"
 import dynamic from "next/dynamic"
 import CountrySelect from "../inputs/CountrySelect"
-import Map from '../Map';
+import Input from "../inputs/Input"
+import Counter from "../inputs/Counter"
+import ImageUpload from "../inputs/ImageUpload"
+import axios from "axios"
+import toast from "react-hot-toast"
 enum STEPS {
   CATEGORY = 0,
   LOCATION = 1,
@@ -77,6 +81,29 @@ const RentModal = () => {
 
   const onNext = () => {
     setStep((value) => value + 1);
+  }
+
+  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    if (step !== STEPS.PRICE) {
+      return onNext();
+    }
+
+    setIsLoading(true);
+
+    axios.post('/api/listings', data)
+      .then(() => {
+        toast.success('Listing created!');
+        router.refresh();
+        reset();
+        setStep(STEPS.CATEGORY)
+        rentModal.onClose();
+      })
+      .catch(() => {
+        toast.error('Something went wrong.');
+      })
+      .finally(() => {
+        setIsLoading(false);
+      })
   }
 
   const actionLabel = useMemo(() => {
@@ -241,7 +268,7 @@ const RentModal = () => {
     <Modal
       isOpen={rentModal.isOpen}
       onClose={rentModal.onClose}
-      onSubmit={onNext}
+      onSubmit={handleSubmit(onSubmit)}
       actionlabel={actionLabel}
       secondaryActionLabel={secondaryActionLabel}
       secondaryAction={step === STEPS.CATEGORY ? undefined : onBack}
