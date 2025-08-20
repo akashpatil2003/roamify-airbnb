@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google"
 import "./globals.css";
-import Navbar from "@/app/components/navbar/Navbar";
+
 import ClientOnly from "./components/ClientOnly";
 import RegisterModal from "./components/modals/RegisterModal";
 import ToasterProvider from "./providers/ToasterProvider";
@@ -9,6 +9,7 @@ import LoginModal from "./components/modals/LoginModal";
 import getCurrentUser from "./actions/getCurrentUser";
 import RentModal from "./components/modals/RentModal";
 import SearchModal from "./components/modals/SearchModal";
+import Navbar from "./components/navbar/Navbar";
 
 export const metadata: Metadata = {
   title: "Roamify",
