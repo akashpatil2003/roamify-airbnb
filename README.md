@@ -1,4 +1,4 @@
-# Full Stack Airbnb Clone with Next.js 13 App Router: React, Tailwind, Prisma, MongoDB, NextAuth 2023
+# Full Stack Airbnb Clone with Next.js 15 App Router: React, Tailwind, Prisma, MongoDB, NextAuth 2025
 
 Features:
 
@@ -43,8 +43,6 @@ npm i
 DATABASE_URL=
 GOOGLE_CLIENT_ID=
 GOOGLE_CLIENT_SECRET=
-GITHUB_ID=
-GITHUB_SECRET=
 NEXTAUTH_SECRET=
 ```
 
