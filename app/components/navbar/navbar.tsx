@@ -32,4 +32,4 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
   )
 }
 
-export default Navbar
+export default Navbar;
